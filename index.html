@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Osteria Nera — Authentic Italian Dining</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
+
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  --color-bg: #0e0e0e;
+  --color-surface: #161616;
+  --color-text: #f0ece4;
+  --color-muted: #6b6b6b;
+  --color-accent: #c9a96e;
+  --color-border: rgba(255,255,255,0.08);
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 5rem;
+  --space-xl: 10rem;
+}
+
+ /* closes :root */
+
+/* — HEADER & NAV — */
+body {
+  background-color: var(--color-bg);
+
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+}
+
+.nav__toggle {
+  display: none;
+}
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.nav__menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav__link {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.nav__link:hover { opacity: 1; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 2.5rem;
+  overflow: visible;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  color: var(--color-text);
+}
+
+.hero__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  opacity: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.hero__tagline {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.hero__cta--primary {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 1rem;
+}
+
+.hero__cta--primary:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.hero__cta--secondary {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+/* ── HERO FADE-IN ANIMATION ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__eyebrow {
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero__title {
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.hero__tagline {
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.hero__cta--primary {
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+
+.hero__cta--secondary {
+  animation: fadeUp 0.8s ease 0.9s both;
+}
+
+    /* ============================================================
+       CSS RESET — add your own styles below this block
+    ============================================================ */
+
+   /* ── ABOUT ── */
+.about {
+  padding: var(--space-xl) 2.5rem;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about__image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+.about__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.about__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.about__text {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
+  margin-top: 2rem;
+  list-style: none;
+}
+
+.about__fact-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  display: block;
+}
+
+.about__fact-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+    /* ============================================================
+       YOUR STYLES GO HERE
+    ============================================================ */
+    /* ── MENU ── */
+.menu {
+  padding: var(--space-xl) 2.5rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu__header {
+  margin-bottom: 4rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2rem;
+}
+
+.menu__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.menu__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+}
+
+.menu__subtitle {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 1rem;
+}
+
+.menu__category {
+  margin-bottom: 5rem;
+}
+
+.menu__category-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+}
+
+.menu__card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  ppadding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu__card.is-visible {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.menu__card-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.menu__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.menu__card-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.menu__card-price {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.menu__card-description {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+/* ── RESERVATIONS ── */
+.reservations {
+  padding: var(--space-xl) 2.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.reservations__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.reservations__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.reservations__intro {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.reservation-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reservation-form__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.reservation-form__input,
+.reservation-form__select,
+.reservation-form__textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.reservation-form__input:focus,
+.reservation-form__select:focus,
+.reservation-form__textarea:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+.reservation-form__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.reservation-form__submit {
+  margin-top: 2rem;
+  padding: 1rem 3rem;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  background: transparent;
+}
+
+.reservation-form__submit:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding: 4rem 2.5rem;
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer__logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.footer__tagline {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.footer__hours-title,
+.footer__social-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+.footer__hours-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.footer__hours-day,
+.footer__hours-time {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.footer__nav-list,
+.footer__social-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__nav-link,
+.footer__social-link {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__nav-link:hover,
+.footer__social-link:hover {
+  color: var(--color-text);
+}
+
+/* ── html root bg — ensures dark canvas even on short pages ── */
+html {
+  background-color: var(--color-bg);
+}
+
+/* ── body typography (complements existing background-color declaration) ── */
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* ── RESERVATIONS layout ── */
+.reservations__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.reservations__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.reservations__text {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.reservations__address {
+  font-style: normal;
+}
+
+.reservations__contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reservations__contact-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.reservations__contact-value {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.reservations__contact-link {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.reservations__contact-link:hover {
+  opacity: 0.7;
+}
+
+/* ── RESERVATION FORM rows ── */
+.reservation-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.reservation-form__input::placeholder,
+.reservation-form__textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+.reservation-form__select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.reservation-form__notice {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── FOOTER bottom bar ── */
+.footer__bottom {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__copyright {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Hamburger bar base (hidden on desktop via nav__toggle display:none) ── */
+.nav__toggle-bar {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--color-text);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* ============================================================
+   RESPONSIVE — mobile (max-width: 768px)
+============================================================ */
+@media (max-width: 768px) {
+
+  /* ── Nav ── */
+  .nav {
+    padding: 1.25rem 1.5rem;
+    position: relative;
+  }
+
+  .nav__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Animate hamburger → X when open */
+  .nav__toggle--active .nav__toggle-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav__toggle--active .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle--active .nav__toggle-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .nav__menu {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .nav__menu--open {
+    display: flex;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero__title {
+    font-size: 2.25rem;
+  }
+
+  .hero__cta--primary {
+    display: block;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .hero__cta--secondary {
+    display: block;
+    text-align: center;
+  }
+
+  /* ── About ── */
+  .about {
+    padding: var(--space-lg) 1.5rem;
+  }
+
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about__image {
+    height: 280px;
+  }
+
+  .about__facts {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* ── Menu ── */
+  .menu {
+    padding: var(--space-lg) 1.5rem 0;
+  }
+
+  /* ── Reservations ── */
+  .reservations {
+    padding: var(--space-lg) 1.5rem;
+  }
+
+  .reservations__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .reservation-form__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 3rem 1.5rem;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer__bottom {
+    margin-top: 2rem;
+  }
+
+}
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER / NAV
+  ============================================================ -->
+  <header class="header" id="top">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav__logo" href="#" aria-label="Osteria Nera — home">
+        Osteria Nera
+      </a>
+
+      <button
+        class="nav__toggle"
+        id="nav-toggle"
+        aria-controls="nav-menu"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu" role="list">
+        <li class="nav__item"><a class="nav__link" href="#about">About</a></li>
+        <li class="nav__item"><a class="nav__link" href="#menu">Menu</a></li>
+        <li class="nav__item"><a class="nav__link" href="#reservations">Reservations</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero__media">
+        <img
+          class="hero__image"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&w=1600&q=80"
+          alt="Elegant Italian restaurant dining room with candlelight"
+        />
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Est. 2008 · Milan</p>
+        <h1 class="hero__title" id="hero-heading">Osteria Nera</h1>
+        <p class="hero__tagline">Where tradition meets the night.</p>
+        <div class="hero__actions">
+          <a class="hero__cta hero__cta--primary" href="#menu">Explore the Menu</a>
+          <a class="hero__cta hero__cta--secondary" href="#reservations">Reserve a Table</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about__inner">
+
+        <div class="about__media">
+          <img
+            class="about__image"
+            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&w=900&q=80"
+            alt="Warm, intimate restaurant interior with exposed brick walls"
+          />
+        </div>
+
+        <div class="about__body">
+          <span class="about__label">Our Story</span>
+          <h2 class="about__title" id="about-heading">A table in the dark heart of the city</h2>
+          <p class="about__text">
+            Osteria Nera was born from a single conviction: that Italian cooking is
+            first and foremost an act of memory. Chef Giulia Ferrante trained under
+            her grandmother in Emilia-Romagna before refining her craft in Florence
+            and Rome. Every plate we serve carries that lineage.
+          </p>
+          <p class="about__text">
+            We source our flour from the same mill in Bologna our family has used
+            for three generations. Our vegetables arrive each morning from the
+            Mercato Centrale. The wine list is curated exclusively from
+            small-production Italian estates, chosen on each annual visit.
+          </p>
+          <ul class="about__facts" role="list">
+            <li class="about__fact">
+              <span class="about__fact-number">17</span>
+              <span class="about__fact-label">Years in service</span>
+            </li>
+            <li class="about__fact">
+              <span class="about__fact-number">4</span>
+              <span class="about__fact-label">Michelin stars awarded</span>
+            </li>
+            <li class="about__fact">
+              <span class="about__fact-number">100%</span>
+              <span class="about__fact-label">Locally sourced produce</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MENU
+    ============================================================ -->
+    <section class="menu" id="menu" aria-labelledby="menu-heading">
+      <div class="menu__inner">
+
+        <header class="menu__header">
+          <h2 class="menu__title" id="menu-heading">What We're Serving</h2>
+          <p class="menu__subtitle">
+            Our menu changes with the seasons. Below is a selection of current offerings.
+          </p>
+        </header>
+
+        <!-- Antipasti -->
+        <div class="menu__category" id="antipasti">
+          <h3 class="menu__category-title">Antipasti</h3>
+          <ul class="menu__grid" role="list">
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&w=600&q=80"
+                  alt="Bruschetta al Pomodoro — toasted bread with heirloom tomatoes"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Bruschetta al Pomodoro</h4>
+                  <span class="menu__card-price">€14</span>
+                </div>
+            
+                <p class="menu__card-description">
+                  Wood-fired sourdough, heirloom tomatoes, aged balsamic,
+                  hand-torn basil, Ligurian extra-virgin olive oil.
+                </p>
+              </div>
+            </li>
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&w=600&q=80"
+                  alt="Carpaccio di Manzo — thinly sliced beef with truffle and parmesan"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Carpaccio di Manzo</h4>
+                  <span class="menu__card-price">€22</span>
+                </div>
+                <p class="menu__card-description">
+                  Paper-thin Piedmontese beef, shaved Parmigiano Reggiano,
+                  black truffle vinaigrette, capers, rocket.
+                </p>
+              </div>
+            </li>
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&w=600&q=80"
+                  alt="Arancini al Nero di Seppia — squid ink rice balls"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Arancini al Nero di Seppia</h4>
+                  <span class="menu__card-price">€18</span>
+                </div>
+                <p class="menu__card-description">
+                  Sicilian squid ink risotto balls, smoked scamorza core,
+                  saffron aioli, micro herbs.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Primi -->
+        <div class="menu__category" id="primi">
+          <h3 class="menu__category-title">Primi</h3>
+          <ul class="menu__grid" role="list">
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&w=600&q=80"
+                  alt="Tagliatelle al Ragù — hand-rolled pasta with Bolognese"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Tagliatelle al Ragù</h4>
+                  <span class="menu__card-price">€28</span>
+                </div>
+                <p class="menu__card-description">
+                  Hand-rolled egg tagliatelle, slow-braised veal and pork ragù,
+                  18-month Parmigiano, toasted breadcrumb.
+                </p>
+              </div>
+            </li>
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&w=600&q=80"
+                  alt="Risotto al Tartufo Nero — black truffle risotto"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Risotto al Tartufo Nero</h4>
+                  <span class="menu__card-price">€36</span>
+                </div>
+                <p class="menu__card-description">
+                  Carnaroli rice, Norcia black truffle, aged Pecorino,
+                  unsalted Lombardy butter, chive oil.
+                </p>
+              </div>
+            </li>
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&w=600&q=80"
+                  alt="Gnocchi al Gorgonzola — potato gnocchi with walnut and blue cheese sauce"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Gnocchi al Gorgonzola</h4>
+                  <span class="menu__card-price">€26</span>
+                </div>
+                <p class="menu__card-description">
+                  Pillowy potato gnocchi, Gorgonzola Dolce cream,
+                  candied walnuts, pear, crispy sage.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Dolci -->
+        <div class="menu__category" id="dolci">
+          <h3 class="menu__category-title">Dolci</h3>
+          <ul class="menu__grid" role="list">
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&w=600&q=80"
+                  alt="Tiramisù Classico — classic tiramisù with espresso and mascarpone"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Tiramisù Classico</h4>
+                  <span class="menu__card-price">€14</span>
+                </div>
+                <p class="menu__card-description">
+                  Venetian-style tiramisù, double-shot espresso-soaked Savoiardi,
+                  mascarpone cream, single-origin cocoa.
+                </p>
+              </div>
+            </li>
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&w=600&q=80"
+                  alt="Panna Cotta alla Vaniglia — vanilla panna cotta with berry coulis"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Panna Cotta alla Vaniglia</h4>
+                  <span class="menu__card-price">€12</span>
+                </div>
+                <p class="menu__card-description">
+                  Set Piedmontese cream, Madagascan vanilla,
+                  wild strawberry and Campari coulis, candied lemon zest.
+                </p>
+              </div>
+            </li>
+
+            <li class="menu__card">
+              <div class="menu__card-media">
+                <img
+                  class="menu__card-image"
+                  src="https://images.unsplash.com/photo-1559622214-f8a9850965bb?auto=format&w=600&q=80"
+                  alt="Cannoli Siciliani — crispy pastry shells with ricotta cream"
+                />
+              </div>
+              <div class="menu__card-body">
+                <div class="menu__card-header">
+                  <h4 class="menu__card-name">Cannoli Siciliani</h4>
+                  <span class="menu__card-price">€13</span>
+                </div>
+                <p class="menu__card-description">
+                  Fried pastry shells filled to order, sheep's milk ricotta,
+                  Sicilian pistachios, blood orange, dark chocolate chips.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESERVATIONS
+    ============================================================ -->
+    <section class="reservations" id="reservations" aria-labelledby="reservations-heading">
+      <div class="reservations__inner">
+
+        <div class="reservations__info">
+          <span class="reservations__label">Book a Table</span>
+          <h2 class="reservations__title" id="reservations-heading">Join Us for an Evening</h2>
+          <p class="reservations__text">
+            We seat guests Tuesday through Sunday. The kitchen opens at 18:30
+            and accepts last orders at 22:00. For parties of six or more,
+            please call us directly.
+          </p>
+          <address class="reservations__address">
+            <ul class="reservations__contact-list" role="list">
+              <li class="reservations__contact-item">
+                <span class="reservations__contact-label">Address</span>
+                <span class="reservations__contact-value">Via Tornabuoni 12, Milan, Italy</span>
+              </li>
+              <li class="reservations__contact-item">
+                <span class="reservations__contact-label">Phone</span>
+                <a class="reservations__contact-link" href="tel:+390223456789">+39 02 2345 6789</a>
+              </li>
+              <li class="reservations__contact-item">
+                <span class="reservations__contact-label">Email</span>
+                <a class="reservations__contact-link" href="mailto:tavolo@osterianera.it">tavolo@osterianera.it</a>
+              </li>
+            </ul>
+          </address>
+        </div>
+
+        <div class="reservations__form-wrap">
+          <form
+  class="reservation-form"
+  id="reservation-form"
+  action="https://formspree.io/f/maqldvqq"
+  method="POST"
+  aria-label="Reservation request form"
+>
+          
+            <div class="reservation-form__row">
+              <div class="reservation-form__field">
+                <label class="reservation-form__label" for="guest-name">Full Name</label>
+                <input
+                  class="reservation-form__input"
+                  type="text"
+                  id="guest-name"
+                  name="guest-name"
+                  autocomplete="name"
+                  required
+                  placeholder="Giulia Ferrante"
+                />
+              </div>
+              <div class="reservation-form__field">
+                <label class="reservation-form__label" for="guest-email">Email Address</label>
+                <input
+                  class="reservation-form__input"
+                  type="email"
+                  id="guest-email"
+                  name="guest-email"
+                  autocomplete="email"
+                  required
+                  placeholder="giulia@example.com"
+                />
+              </div>
+            </div>
+
+            <div class="reservation-form__row">
+              <div class="reservation-form__field">
+                <label class="reservation-form__label" for="guest-phone">Phone (optional)</label>
+                <input
+                  class="reservation-form__input"
+                  type="tel"
+                  id="guest-phone"
+                  name="guest-phone"
+                  autocomplete="tel"
+                  placeholder="+39 02 0000 0000"
+                />
+              </div>
+              <div class="reservation-form__field">
+                <label class="reservation-form__label" for="guest-count">Number of Guests</label>
+                <select class="reservation-form__select" id="guest-count" name="guest-count" required>
+                  <option value="" disabled selected>Select…</option>
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5">5 guests</option>
+                  <option value="6+">6 or more (call us)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="reservation-form__row">
+              <div class="reservation-form__field">
+                <label class="reservation-form__label" for="reservation-date">Preferred Date</label>
+                <input
+                  class="reservation-form__input"
+                  type="date"
+                  id="reservation-date"
+                  name="reservation-date"
+                  required
+                />
+              </div>
+              <div class="reservation-form__field">
+                <label class="reservation-form__label" for="reservation-time">Preferred Time</label>
+                <select class="reservation-form__select" id="reservation-time" name="reservation-time" required>
+                  <option value="" disabled selected>Select…</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                  <option value="19:30">19:30</option>
+                  <option value="20:00">20:00</option>
+                  <option value="20:30">20:30</option>
+                  <option value="21:00">21:00</option>
+                  <option value="21:30">21:30</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="reservation-form__field">
+              <label class="reservation-form__label" for="special-requests">Special Requests</label>
+              <textarea
+                class="reservation-form__textarea"
+                id="special-requests"
+                name="special-requests"
+                rows="4"
+                placeholder="Dietary requirements, occasion, seating preferences…"
+              ></textarea>
+            </div>
+
+            <button class="reservation-form__submit" type="submit">
+              Request Reservation
+            </button>
+
+            <p class="reservation-form__notice" id="form-success" style="display:none; color: var(--color-accent);">
+  Thank you — we'll confirm within 24 hours.
+</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+
+      <div class="footer__brand">
+        <p class="footer__logo">Osteria Nera</p>
+        <p class="footer__tagline">Where tradition meets the night.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__nav-list" role="list">
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#about">About</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#menu">Menu</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="#reservations">Reservations</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__hours">
+        <h3 class="footer__hours-title">Hours</h3>
+        <dl class="footer__hours-list">
+          <div class="footer__hours-row">
+            <dt class="footer__hours-day">Tuesday – Thursday</dt>
+            <dd class="footer__hours-time">18:30 – 22:30</dd>
+          </div>
+          <div class="footer__hours-row">
+            <dt class="footer__hours-day">Friday – Saturday</dt>
+            <dd class="footer__hours-time">18:00 – 23:00</dd>
+          </div>
+          <div class="footer__hours-row">
+            <dt class="footer__hours-day">Sunday</dt>
+            <dd class="footer__hours-time">17:30 – 22:00</dd>
+          </div>
+          <div class="footer__hours-row">
+            <dt class="footer__hours-day">Monday</dt>
+            <dd class="footer__hours-time">Closed</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="footer__social">
+        <h3 class="footer__social-title">Follow Us</h3>
+        <ul class="footer__social-list" role="list">
+          <li class="footer__social-item">
+            <a class="footer__social-link" href="#" aria-label="Osteria Nera on Instagram">Instagram</a>
+          </li>
+          <li class="footer__social-item">
+            <a class="footer__social-link" href="#" aria-label="Osteria Nera on Facebook">Facebook</a>
+          </li>
+          <li class="footer__social-item">
+            <a class="footer__social-link" href="#" aria-label="Osteria Nera on TripAdvisor">TripAdvisor</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; <span id="footer-year"></span> Osteria Nera S.r.l. — Via Tornabuoni 12, Milan, Italy
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — mobile nav toggle + smooth scroll
+  ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Dynamic year ──────────────────────────────────────── */
+      var yearEl = document.getElementById('footer-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      /* ── Mobile nav toggle ─────────────────────────────────── */
+      var toggle = document.getElementById('nav-toggle');
+      var menu   = document.getElementById('nav-menu');
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          var isOpen = menu.classList.toggle('nav__menu--open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          toggle.classList.toggle('nav__toggle--active', isOpen);
+        });
+
+        /* Close menu when a nav link is clicked */
+        menu.addEventListener('click', function (e) {
+          if (e.target.matches('.nav__link')) {
+            menu.classList.remove('nav__menu--open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.classList.remove('nav__toggle--active');
+          }
+        });
+
+        /* Close menu when focus moves outside nav */
+        document.addEventListener('focusin', function (e) {
+          var nav = toggle.closest('.nav');
+          if (nav && !nav.contains(e.target)) {
+            menu.classList.remove('nav__menu--open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.classList.remove('nav__toggle--active');
+          }
+        });
+      }
+
+      /* ── Smooth scroll ─────────────────────────────────────── */
+      document.addEventListener('click', function (e) {
+        var anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
+
+        var targetId = anchor.getAttribute('href').slice(1);
+        if (!targetId) return;
+
+        var target = document.getElementById(targetId);
+        if (!target) return;
+
+        e.preventDefault();
+
+        /* Offset for sticky header — reads actual header height at click time */
+        var header     = document.querySelector('.header');
+        var headerH    = header ? header.getBoundingClientRect().height : 0;
+        var targetTop  = target.getBoundingClientRect().top + window.scrollY - headerH;
+
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+        /* Move focus to the target section for keyboard / AT users */
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      });
+
+      /* ── Menu card scroll animation ────────────────────────── */
+      const cards = document.querySelectorAll('.menu__card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('is-visible');
+            }, i * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        observer.observe(card);
+      });
+
+    }());
+  </script>
+
+</body>
+</html>
